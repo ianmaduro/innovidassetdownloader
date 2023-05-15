@@ -175,13 +175,15 @@ document.getElementsByClassName("tablinks")[0].click();
 document.getElementById('downloadButtonCreative').addEventListener('click', function() {
     var dataRows = document.getElementById('excelDataTableCreative').querySelectorAll('tr:not(:first-child)');
     var urlsToOpen = [];
-    
-    dataRows.forEach(function(row, index) {
-        var checkbox = row.querySelector('input[type=checkbox]');
-        var statusCell = row.querySelector('td:last-child');
+    var downloadCount = 0;
 
-        // Skip if the row doesn't have a checkbox or already has a "Complete" cell
-        if (!checkbox || (statusCell && statusCell.textContent === 'Complete')) {
+    dataRows.forEach(function(row, index) {
+        if (downloadCount >= 6) return;
+
+        var checkbox = row.querySelector('input[type=checkbox]');
+
+        // Skip if the row doesn't have a checkbox
+        if (!checkbox) {
             return;
         }
 
@@ -190,12 +192,16 @@ document.getElementById('downloadButtonCreative').addEventListener('click', func
             if (urlCell) {
                 var url = urlCell.textContent;
                 urlsToOpen.push(url);
-                
-                statusCell.textContent = 'Complete'; // set status cell to "Complete"
+
+                var cell = document.createElement('td');
+                cell.appendChild(document.createTextNode('Complete'));
+                row.appendChild(cell);
+
+                downloadCount++;
             }
         }
     });
-    
+
     if (urlsToOpen.length > 0) {
         var popupWindow = window.open("", "_blank");
         urlsToOpen.forEach(function(url) {
@@ -203,5 +209,3 @@ document.getElementById('downloadButtonCreative').addEventListener('click', func
         });
     }
 });
-
-
