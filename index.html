@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script lang="javascript" src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    
+</head>
+<body>
+    <h1>Innovid Asset Downloader</h1>
+    <h2>Choose Tab </h2>
+    <h3>AHM Asset Downloader | Creative List Downloader</h3>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'AHM Asset Downloader')">AHM Asset Downloader</button>
+        <button class="tablinks" onclick="openTab(event, 'Creative list Downloader')">Creative list Downloader</button>
+    </div>
+
+    <div id="AHM Asset Downloader" class="tabcontent">
+        <h3>AHM Asset Downloader</h3>
+        <button id="templateDownloadButton">Download Excel Template</button>
+        <label for="excelFileUpload">Upload Excel or CSV File</label>
+        <input type="file" id="excelFileUpload" accept=".csv,.xlsx">
+        <button id="downloadButton">Download Files</button>
+        <br></br>
+        <table id="excelDataTable"></table>
+    </div>
+
+    <div id="Creative list Downloader" class="tabcontent">
+        <h3>Creative list Downloader</h3>    
+        <p>Download the Innovid Creative Batch Renaming tool to rename all files after downloading</p>    
+        <button id="BatchRenamerTool">Innovid Creative Batch Renaming Tool</button>
+        <label for="excelFileUploadCreative">Upload Excel or CSV File</label>
+        <input type="file" id="excelFileUploadCreative" accept=".csv,.xlsx">
+        <button id="downloadButtonCreative">Download Selected</button>
+        <br></br>
+        <table id="excelDataTableCreative"></table>                     
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
