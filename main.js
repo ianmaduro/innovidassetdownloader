@@ -191,6 +191,8 @@ document.getElementById('downloadButtonCreative').addEventListener('click', func
             var urlCell = row.querySelector('td:nth-child(5)'); // Now it's the 5th column
             if (urlCell) {
                 var url = urlCell.textContent;
+                // Replace http with https
+                url = url.replace('http://', 'https://');
                 urlsToOpen.push(url);
 
                 var cell = document.createElement('td');
